@@ -28,4 +28,7 @@ public class SalesInfoService {
         return salesInfoRepository.save(salesInfo);
     }
 
+    public void deleteSaleInfo(int id) {
+        salesInfoRepository.deleteById(id);
+    }
 }

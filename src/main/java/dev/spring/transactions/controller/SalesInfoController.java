@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class SalesInfoController {
@@ -16,7 +17,7 @@ public class SalesInfoController {
         this.salesInfoService = salesInfoService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<SalesInfo>> getAllSalesInfo() {
         List<SalesInfo> salesInfoList = salesInfoService.getAllSalesInfo();
         return ResponseEntity.ok(salesInfoList);
@@ -31,6 +32,15 @@ public class SalesInfoController {
     public ResponseEntity<SalesInfo> createSalesInfo(@RequestBody SalesInfo salesInfo) {
         SalesInfo savedSalesInfo = salesInfoService.createSalesInfo(salesInfo);
         return ResponseEntity.ok(savedSalesInfo);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<SalesInfo> createSalesInfo(@PathVariable int id) {
+        Optional<SalesInfo> salesInfo = salesInfoService.getSalesInfoById(id);
+        if (salesInfo.isPresent()) {
+            salesInfoService.deleteSaleInfo(id);
+            return ResponseEntity.ok(salesInfo.get());
+        } else return ResponseEntity.notFound().build();
     }
 
 }
