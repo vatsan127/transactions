@@ -1,7 +1,6 @@
 server:
   port: 8080
-  servlet:
-    context-path: /transactions
+  servlet.context-path: /transactions
 
 management.endpoints.web.exposure.include: prometheus
 
@@ -10,16 +9,10 @@ spring:
   profiles.active: mysql
   banner.location: banner.txt
   jpa:
-    hibernate:
-      ddl-auto: update
+    hibernate.ddl-auto: update
     show-sql: true
-  datasource:
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 5
-
 ---
-# Properties for MySQL Datasource
+
 spring:
   config.activate.on-profile: mysql
   datasource:
@@ -27,4 +20,10 @@ spring:
     username: root
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari.pool-name: mysql-con
+    hikari:
+      pool-name: mysql-con
+      maximum-pool-size: 10
+      minimum-idle: 5
+
+transactions:
+  debugModeEnabled: false
