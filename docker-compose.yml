@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+  transaction-service:
+    image: transaction:latest
+    build:
+      context: ./
+    depends_on:
+      - transaction-db
+    ports:
+      - "8080:8080"
+    networks:
+      - transaction-network
+
+  transaction-db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: dev
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - transaction-db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - transaction-network

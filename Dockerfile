@@ -1,5 +1,5 @@
 # Stage 1: Build the Java application using Maven (builder stage)
-FROM maven:3.8-openjdk-17-alpine AS builder
+FROM maven:3-amazoncorretto-17-alpine AS builder
 WORKDIR /app
 COPY . .
 RUN mvn clean install
