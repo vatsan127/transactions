@@ -10,4 +10,4 @@ RUN apk add --no-cache busybox
 ENV PROFILE=mysql
 WORKDIR /app
 COPY --from=builder /app/target/transactions-v1.jar /app/transactions-v1.jar
-CMD ["java", "-Dspring.profiles.active=${PROFILE}", "-jar", "/app/transactions-v1.jar"]
+CMD ["java", "-Dspring.profiles.active=${PROFILE}", "-jar", "/app/transactions-v1.jar", "-DskipTests"]

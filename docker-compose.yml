@@ -18,14 +18,14 @@ services:
       MYSQL_DATABASE: dev
       MYSQL_ROOT_PASSWORD: password
     volumes:
-      - transaction-db:/var/lib/mysql
+      - transaction-db-vol:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
       - transaction-network
 
 volumes:
-  transaction-db:
+  transaction-db-vol:
 
 networks:
-  transaction-network: 
+  transaction-network:
