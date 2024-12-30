@@ -26,4 +26,4 @@ spring:
       minimum-idle: 5
 
 transactions:
-  debugModeEnabled: false
+  debugModeEnabled: true
