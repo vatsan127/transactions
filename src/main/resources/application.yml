@@ -6,19 +6,22 @@ management.endpoints.web.exposure.include: prometheus
 
 spring:
   application.name: transactions
-  profiles.active: mysql
+  profiles.active: ${SPRING_PROFILE:mysql}
   banner.location: banner.txt
   jpa:
     hibernate.ddl-auto: update
     show-sql: true
+
+#logging.config: file:/app/logback.xml
+
 ---
 
 spring:
   config.activate.on-profile: mysql
   datasource:
-    url: jdbc:mysql://mysql_db:3306/dev
-    username: root
-    password: password
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/${DB_DATABASE:dev}
+    username: ${DB_USERNAME:root}
+    password: ${DB_USERNAME:password}
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       pool-name: mysql-con

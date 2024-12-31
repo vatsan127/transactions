@@ -3,8 +3,13 @@ version: '3.1'
 services:
   service:
     image: transactions:latest
-#    build:
-#      context: ./
+    build.context: ./
+    environment:
+      SPRING_PROFILE: mysql
+      DB_HOST: mysql_db
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_DATABASE: ${MYSQL_DATABASE}
     depends_on:
       - mysql_db
     ports:
