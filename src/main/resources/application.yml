@@ -1,6 +1,6 @@
 server:
   port: 8080
-  servlet.context-path: /transactions
+  servlet.context-path: /${spring.application.name}
 
 management.endpoints.web.exposure.include: prometheus
 
@@ -9,13 +9,17 @@ spring:
   profiles.active: ${SPRING_PROFILE:mysql}
   banner.location: banner.txt
   jpa:
-    hibernate.ddl-auto: update
+    hibernate.ddl-auto: none
     show-sql: true
+  sql.init.mode: always
+  datasource.hikari:
+    maximum-pool-size: 10
+    minimum-idle: 5
 
-#logging.config: file:/app/logback.xml
+logging.config: config/logback.xml
 
 ---
-
+# MySQL Datasource Properties
 spring:
   config.activate.on-profile: mysql
   datasource:
@@ -23,12 +27,20 @@ spring:
     username: ${DB_USERNAME:root}
     password: ${DB_USERNAME:password}
     driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari:
-      pool-name: mysql-con
-      maximum-pool-size: 10
-      minimum-idle: 5
+    hikari.pool-name: mysql-con
 
 ---
+# Postgres Datasource Properties
+spring:
+  config.activate.on-profile: postgres
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_DATABASE:dev}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_USERNAME:password}
+    driver-class-name: org.postgresql.Driver
+    hikari.pool-name: postgres-con
 
+---
+# Application Properties
 transactions:
   debugModeEnabled: true
