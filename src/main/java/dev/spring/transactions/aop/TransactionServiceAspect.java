@@ -4,6 +4,7 @@ import dev.spring.transactions.config.TransactionConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import java.util.Arrays;
 @Aspect
 @Slf4j
 @Component
+@ConditionalOnProperty(prefix = "transactions", value = "debugModeEnabled", havingValue = "true", matchIfMissing = false)
 public class TransactionServiceAspect {
 
     private TransactionConfig config;
@@ -41,16 +43,11 @@ public class TransactionServiceAspect {
     }
 
     private void logMethodDetails(boolean isBefore, JoinPoint joinPoint, Object returnValue) {
-        if (!config.isDebugModeEnabled()) return;
         StringBuilder message = new StringBuilder();
         message.append(String.format("Method: '%s'", joinPoint.getSignature().getName()));
 
-        if (isBefore) {
-            Object[] args = joinPoint.getArgs();
-            if (args.length > 0) message.append(" :: Params: ").append(Arrays.toString(args));
-        }
-
-        if (returnValue != null) message.append(" :: Returned value: ").append(returnValue);
+        if (isBefore) message.append(" Called :: Params: ").append(Arrays.toString(joinPoint.getArgs()));
+        else message.append(" Executed :: Returned value: ").append(returnValue);
         log.info(message.toString());
     }
 }

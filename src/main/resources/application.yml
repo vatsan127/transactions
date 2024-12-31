@@ -1,6 +1,6 @@
 server:
   port: 8080
-  servlet.context-path: /${spring.application.name}
+  servlet.context-path: /${spring.application.name}/v1
 
 management.endpoints.web.exposure.include: prometheus
 
@@ -43,4 +43,4 @@ spring:
 ---
 # Application Properties
 transactions:
-  debugModeEnabled: true
+  debugModeEnabled: false
