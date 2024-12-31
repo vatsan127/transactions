@@ -16,7 +16,7 @@ spring:
 spring:
   config.activate.on-profile: mysql
   datasource:
-    url: jdbc:mysql://${mysql_db}:3306/dev
+    url: jdbc:mysql://mysql_db:3306/dev
     username: root
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
