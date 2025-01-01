@@ -3,7 +3,8 @@ version: '3.1'
 services:
   service:
     image: transactions:latest
-    build.context: ./
+    build:
+      context: ./
     environment:
       SPRING_PROFILE: mysql
       DB_HOST: mysql_db
