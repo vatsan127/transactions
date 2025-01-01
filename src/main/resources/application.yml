@@ -6,7 +6,7 @@ management.endpoints.web.exposure.include: prometheus
 
 spring:
   application.name: transactions
-  profiles.active: ${SPRING_PROFILE:mysql}
+  profiles.active: mysql
   banner.location: banner.txt
   jpa:
     hibernate.ddl-auto: none
@@ -32,4 +32,4 @@ spring:
 ---
 # Application Properties
 transactions:
-  debugModeEnabled: false
+  debugModeEnabled: true
