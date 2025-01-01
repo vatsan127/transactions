@@ -3,7 +3,7 @@ FROM maven:3-amazoncorretto-17-alpine AS builder
 WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:resolve
-COPY . .
+COPY src ./src
 RUN mvn clean install -DskipTests
 
 # Stage 2: Run the Java application
