@@ -30,17 +30,6 @@ spring:
     hikari.pool-name: mysql-con
 
 ---
-# Postgres Datasource Properties
-spring:
-  config.activate.on-profile: postgres
-  datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_DATABASE:dev}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_USERNAME:password}
-    driver-class-name: org.postgresql.Driver
-    hikari.pool-name: postgres-con
-
----
 # Application Properties
 transactions:
   debugModeEnabled: false
