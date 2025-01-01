@@ -30,12 +30,10 @@ services:
     networks:
       - service_network
 
----
 # Volumes
 volumes:
   mysql_db:
 
----
 # Networks
 networks:
   service_network:
