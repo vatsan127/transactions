@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   service:
-    image: transactions:${TAG}
+    image: transactions:latest
     environment:
       SPRING_PROFILES_ACTIVE: mysql
       DB_HOST: mysql_db
