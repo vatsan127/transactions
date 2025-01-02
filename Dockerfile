@@ -1,4 +1,5 @@
 FROM openjdk:17-jdk-alpine
+MAINTAINER srivatsan
 RUN addgroup -S srivatsan && adduser -S srivatsan -G srivatsan
 USER srivatsan:srivatsan
 ARG DEPENDENCY=target/dependency

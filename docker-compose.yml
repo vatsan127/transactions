@@ -1,15 +1,13 @@
 version: '3.1'
 
 services:
-  service: # TransactionService
-    image: transactions:latest
-    build:
-      context: ./
+  service:
+    image: transactions:${TIMESTAMP}
     environment:
       SPRING_PROFILES_ACTIVE: mysql
       DB_HOST: mysql_db
       DB_USERNAME: root
-      DB_PASSWORD: password
+      DB_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       DB_DATABASE: ${MYSQL_DATABASE}
     depends_on:
       - mysql_db
@@ -18,7 +16,7 @@ services:
     networks:
       - service_network
 
-  mysql_db: # Database
+  mysql_db:
     image: mysql:8.0
     environment:
       MYSQL_DATABASE: dev
@@ -30,10 +28,8 @@ services:
     networks:
       - service_network
 
-# Volumes
 volumes:
   mysql_db:
 
-# Networks
 networks:
   service_network:
