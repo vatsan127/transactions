@@ -1,4 +1,5 @@
 FROM openjdk:17-jdk-alpine
+RUN apk add --no-cache busybox
 RUN addgroup -S srivatsan && adduser -S srivatsan -G srivatsan
 USER srivatsan:srivatsan
 ARG DEPENDENCY=target/dependency
