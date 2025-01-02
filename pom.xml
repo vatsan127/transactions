@@ -71,12 +71,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!--Postgres-->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-        </dependency>
-
         <!--Actuator-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

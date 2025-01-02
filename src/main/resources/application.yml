@@ -15,6 +15,7 @@ spring:
   datasource.hikari:
     maximum-pool-size: 10
     minimum-idle: 5
+  output.ansi.enabled: always
 
 logging.config: config/logback.xml
 
