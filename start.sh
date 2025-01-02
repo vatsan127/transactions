@@ -3,4 +3,4 @@ mvn clean install -DskipTests
 mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 docker builder prune -f
 docker build -t transaction:$TIMESTAMP .
-docker-compose up --build-arg TIMESTAMP=$TIMESTAMP --file docker-compose.yml -d
+docker-compose up --build-arg TIMESTAMP=$TIMESTAMP --file docker-compose.yml --force-recreate
