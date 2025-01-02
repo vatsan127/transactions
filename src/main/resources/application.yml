@@ -24,7 +24,7 @@ logging.config: config/logback.xml
 spring:
   config.activate.on-profile: mysql
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:3306/${DB_DATABASE:dev}
+    url: jdbc:mysql://${DB_HOST}:3306/${DB_DATABASE:dev}
     username: ${DB_USERNAME:root}
     password: ${DB_USERNAME:password}
     driver-class-name: com.mysql.cj.jdbc.Driver
