@@ -9,5 +9,4 @@ echo "Timestamp: $(date +"%Y-%m-%d %H:%M:%S")"
 
 docker tag transactions:latest transactions:$(date +"%Y%m%d%H%M%S")
 docker build -t transactions:latest .
-#docker-compose up --file docker-compose-mysql.yml
-docker-compose up --file docker-compose-mariadb.yml
+docker-compose up --file compose.yml

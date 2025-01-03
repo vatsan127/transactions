@@ -6,12 +6,13 @@ management.endpoints.web.exposure.include: prometheus
 
 spring:
   application.name: transactions
-  profiles.active: mariadb
+  profiles.active: postgres
+
   banner.location: banner.txt
   jpa:
     hibernate.ddl-auto: none
     show-sql: true
-  sql.init.mode: always
+  sql.init.mode: never
   datasource.hikari:
     maximum-pool-size: 10
     minimum-idle: 5
@@ -20,27 +21,16 @@ spring:
 logging.config: config/logback.xml
 
 ---
-# MySQL Datasource Properties
+# Postgres properties
 spring:
-  config.activate.on-profile: mysql
+  config.activate.on-profile: postgres
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:3306/${DB_DATABASE:dev}
-    username: ${DB_USERNAME:root}
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_DATABASE:dev}
+    username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD:password}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari.pool-name: mysql-con
+    driver-class-name: org.postgresql.Driver
+    hikari.pool-name: postgres-con
 
 ---
-# MariaDB Datasource Properties
-spring:
-  config.activate.on-profile: mariadb
-  datasource:
-    url: jdbc:mariadb://${DB_HOST:localhost}:3306/${DB_DATABASE:dev}
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:password}
-    driver-class-name: org.mariadb.jdbc.Driver
-    hikari.pool-name: mariadb-con
-
----
-# Application Properties
+# Application properties
 transactions.debugModeEnabled: true
