@@ -6,7 +6,7 @@ management.endpoints.web.exposure.include: prometheus
 
 spring:
   application.name: transactions
-  profiles.active: mysql
+  profiles.active: mariadb
   banner.location: banner.txt
   jpa:
     hibernate.ddl-auto: none
@@ -24,13 +24,23 @@ logging.config: config/logback.xml
 spring:
   config.activate.on-profile: mysql
   datasource:
-    url: jdbc:mysql://${DB_HOST}:3306/${DB_DATABASE:dev}
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/${DB_DATABASE:dev}
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:password}
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari.pool-name: mysql-con
 
 ---
+# MariaDB Datasource Properties
+spring:
+  config.activate.on-profile: mariadb
+  datasource:
+    url: jdbc:mariadb://${DB_HOST:localhost}:3306/${DB_DATABASE:dev}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: org.mariadb.jdbc.Driver
+    hikari.pool-name: mariadb-con
+
+---
 # Application Properties
-transactions:
-  debugModeEnabled: true
+transactions.debugModeEnabled: true
