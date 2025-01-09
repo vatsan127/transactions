@@ -64,14 +64,6 @@
             <version>6.1.4</version>
         </dependency>
 
-        <!--Docker Compose-->
-<!--        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-docker-compose</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>-->
-
         <!--Postgres-->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -97,12 +89,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <!--Maira DB-->
-        <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
         </dependency>
 
         <dependency>

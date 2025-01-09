@@ -7,7 +7,6 @@ management.endpoints.web.exposure.include: prometheus
 spring:
   application.name: transactions
   profiles.active: postgres
-
   banner.location: banner.txt
   jpa:
     hibernate.ddl-auto: none

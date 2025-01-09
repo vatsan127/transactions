@@ -26,6 +26,7 @@ public class SalesInfoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<SalesInfo> getSalesInfoById(@PathVariable int id) {
+        salesInfoService.getSalesInfoById(id);
         return salesInfoService.getSalesInfoById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
