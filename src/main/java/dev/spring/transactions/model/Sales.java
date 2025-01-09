@@ -1,14 +1,12 @@
 package dev.spring.transactions.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "sales_info")
-public class SalesInfo {
+@Table(name = "sales")
+public class Sales {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

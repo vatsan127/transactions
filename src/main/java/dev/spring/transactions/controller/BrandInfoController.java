@@ -1,6 +1,6 @@
 package dev.spring.transactions.controller;
 
-import dev.spring.transactions.model.BrandInfo;
+import dev.spring.transactions.model.Brand;
 import dev.spring.transactions.repository.BrandInfoRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,12 +21,12 @@ public class BrandInfoController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<BrandInfo>> getAllBrandInfo() {
+    public ResponseEntity<List<Brand>> getAllBrandInfo() {
         return ResponseEntity.ok(brandInfoRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BrandInfo> getBrandInfoById(@PathVariable int id) {
+    public ResponseEntity<Brand> getBrandInfoById(@PathVariable int id) {
         return brandInfoRepository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 

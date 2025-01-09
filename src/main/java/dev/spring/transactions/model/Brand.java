@@ -1,14 +1,12 @@
 package dev.spring.transactions.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "brand_info")
-public class BrandInfo {
+@Table(name = "brand")
+public class Brand {
 
     @Id
     private int id;

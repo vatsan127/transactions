@@ -1,6 +1,6 @@
 package dev.spring.transactions.controller;
 
-import dev.spring.transactions.model.SalesInfo;
+import dev.spring.transactions.model.Sales;
 import dev.spring.transactions.service.SalesInfoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,26 +19,26 @@ public class SalesInfoController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<SalesInfo>> getAllSalesInfo() {
-        List<SalesInfo> salesInfoList = salesInfoService.getAllSalesInfo();
-        return ResponseEntity.ok(salesInfoList);
+    public ResponseEntity<List<Sales>> getAllSalesInfo() {
+        List<Sales> salesList = salesInfoService.getAllSalesInfo();
+        return ResponseEntity.ok(salesList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SalesInfo> getSalesInfoById(@PathVariable int id) {
+    public ResponseEntity<Sales> getSalesInfoById(@PathVariable int id) {
         salesInfoService.getSalesInfoById(id);
         return salesInfoService.getSalesInfoById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/create")
-    public ResponseEntity<SalesInfo> createSalesInfo(@RequestBody SalesInfo salesInfo) {
-        SalesInfo savedSalesInfo = salesInfoService.createSalesInfo(salesInfo);
-        return ResponseEntity.ok(savedSalesInfo);
+    public ResponseEntity<Sales> createSalesInfo(@RequestBody Sales sales) {
+        Sales savedSales = salesInfoService.createSalesInfo(sales);
+        return ResponseEntity.ok(savedSales);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<SalesInfo> createSalesInfo(@PathVariable int id) {
-        Optional<SalesInfo> salesInfo = salesInfoService.getSalesInfoById(id);
+    public ResponseEntity<Sales> createSalesInfo(@PathVariable int id) {
+        Optional<Sales> salesInfo = salesInfoService.getSalesInfoById(id);
         if (salesInfo.isPresent()) {
             salesInfoService.deleteSaleInfo(id);
             return ResponseEntity.ok(salesInfo.get());

@@ -1,13 +1,15 @@
 package dev.spring.transactions.service;
 
-import dev.spring.transactions.model.SalesInfo;
+import dev.spring.transactions.model.Sales;
 import dev.spring.transactions.repository.SalesInfoRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Cacheable("sales")
 public class SalesInfoService {
 
     private final SalesInfoRepository salesInfoRepository;
@@ -16,16 +18,16 @@ public class SalesInfoService {
         this.salesInfoRepository = salesInfoRepository;
     }
 
-    public List<SalesInfo> getAllSalesInfo() {
+    public List<Sales> getAllSalesInfo() {
         return salesInfoRepository.findAll();
     }
 
-    public Optional<SalesInfo> getSalesInfoById(int id) {
+    public Optional<Sales> getSalesInfoById(int id) {
         return salesInfoRepository.findById(id);
     }
 
-    public SalesInfo createSalesInfo(SalesInfo salesInfo) {
-        return salesInfoRepository.save(salesInfo);
+    public Sales createSalesInfo(Sales sales) {
+        return salesInfoRepository.save(sales);
     }
 
     public void deleteSaleInfo(int id) {
