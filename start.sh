@@ -2,7 +2,7 @@
 
 mvn clean install -DskipTests
 mkdir -p target/dependency
-cd target/dependency && jar -xf ../*.jar && cd -
+cd target/dependency && jar -xf ../../*.jar && cd -
 
 TIMESTAMP=$(date +"%Y%m%d%H%M%S")
 echo "Timestamp: $(TIMESTAMP)"
