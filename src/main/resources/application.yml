@@ -5,7 +5,9 @@ server:
 management.endpoints.web.exposure.include: prometheus
 
 spring:
-  application.name: transactions
+  application:
+    name: transactions
+    version: 1.0.0
   profiles.active: postgres
   banner.location: banner.txt
   jpa:

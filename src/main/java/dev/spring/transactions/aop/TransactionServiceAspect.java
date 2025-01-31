@@ -1,6 +1,6 @@
 package dev.spring.transactions.aop;
 
-import dev.spring.transactions.config.TransactionConfig;
+import dev.spring.transactions.config.AppConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -15,9 +15,9 @@ import java.util.Arrays;
 @ConditionalOnProperty(prefix = "transactions", value = "debugModeEnabled", havingValue = "true", matchIfMissing = false)
 public class TransactionServiceAspect {
 
-    private TransactionConfig config;
+    private AppConfig config;
 
-    public TransactionServiceAspect(TransactionConfig config) {
+    public TransactionServiceAspect(AppConfig config) {
         this.config = config;
     }
 

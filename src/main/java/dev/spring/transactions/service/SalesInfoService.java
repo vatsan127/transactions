@@ -2,6 +2,7 @@ package dev.spring.transactions.service;
 
 import dev.spring.transactions.model.Sales;
 import dev.spring.transactions.repository.SalesInfoRepository;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,7 @@ public class SalesInfoService {
         return salesInfoRepository.findById(id);
     }
 
+    @CachePut("sales")
     public Sales createSalesInfo(Sales sales) {
         return salesInfoRepository.save(sales);
     }

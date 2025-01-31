@@ -10,13 +10,13 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "transactions")
-public class TransactionConfig {
+public class AppConfig {
 
     private boolean debugModeEnabled;
 
     @PostConstruct
     public void init() {
-        log.info("Transactions Properties : {}", this);
+        log.info("AppConfig : {}", this);
     }
 
 }
