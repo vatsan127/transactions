@@ -7,3 +7,4 @@
 Application Name - ${spring.application.name}
 Application Version - ${spring.application.version}
 Spring Version - ${spring-boot.version} Stable
+DebugMode - ${${spring.application.name}.debugModeEnabled}

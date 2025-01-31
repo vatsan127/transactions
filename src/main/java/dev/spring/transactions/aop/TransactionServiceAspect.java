@@ -48,6 +48,8 @@ public class TransactionServiceAspect {
 
         if (isBefore) message.append(" Called :: Params: ").append(Arrays.toString(joinPoint.getArgs()));
         else message.append(" Executed :: Returned value: ").append(returnValue);
-        log.debug(message.toString());
+        if (log.isDebugEnabled()) {
+            log.info(message.toString());
+        }
     }
 }

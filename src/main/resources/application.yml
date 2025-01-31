@@ -34,4 +34,4 @@ spring:
 
 ---
 # Application properties
-transactions.debugModeEnabled: true
+transactions.debugModeEnabled: false
