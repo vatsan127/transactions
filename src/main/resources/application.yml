@@ -19,7 +19,7 @@ spring:
     minimum-idle: 5
   output.ansi.enabled: always
 
-logging.config: config/logback.xml
+#logging.config: config/logback.xml
 
 ---
 # Postgres properties
